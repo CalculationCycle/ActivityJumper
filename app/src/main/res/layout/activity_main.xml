@@ -23,4 +23,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textView"
         tools:layout_editor_absoluteX="16dp" />
 
+    <Button
+        android:id="@+id/gotoImgLoadButton"
+        android:layout_width="wrap_content"
+        android:layout_height="49dp"
+        android:layout_marginBottom="60dp"
+        android:text="Goto ImgLoad"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="142dp"
+        android:onClick="buttonGotoImgLoadOnClick" />
+
 </android.support.constraint.ConstraintLayout>

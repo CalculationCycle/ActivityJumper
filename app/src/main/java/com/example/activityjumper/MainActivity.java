@@ -5,45 +5,17 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.view.View;
+import android.content.Intent;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Cache;
-import com.android.volley.Network;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.BasicNetwork;
-import com.android.volley.toolbox.DiskBasedCache;
-import com.android.volley.toolbox.HurlStack;
 import com.android.volley.toolbox.StringRequest;
-
-class VolleyRequestQueue {
-    private RequestQueue requestQueue;
-    private Cache cache;
-    private Network network;
-
-    VolleyRequestQueue(Context appContext)
-    {
-        cache = new DiskBasedCache(appContext.getCacheDir(), 1024 * 1024); // 1MB cap
-        network = new BasicNetwork(new HurlStack());
-        requestQueue = new RequestQueue(cache, network);
-        requestQueue.start();
-    }
-
-    StringRequest addStrRequest(StringRequest strRequest)
-    {
-        return (StringRequest)requestQueue.add(strRequest);
-    }
-
-    void stop()
-    {
-        requestQueue.stop();
-    }
-}
 
 public class MainActivity extends AppCompatActivity {
 
@@ -103,5 +75,11 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
         StringRequest strRequest = reqQueue.addStrRequest(strReq);
+    }
+
+    public void buttonGotoImgLoadOnClick(View view)
+    {
+        Intent intent = new Intent(this, CatalystImageActivity.class);
+        startActivity(intent);
     }
 }
